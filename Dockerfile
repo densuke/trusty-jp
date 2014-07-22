@@ -6,7 +6,7 @@ RUN sed -e 's;http://archive;http://jp.archive;' -e  's;http://us\.archive;http:
 RUN [ ! -x /usr/bin/wget ] && apt-get update && apt-get install -y wget && touch /.get-wget
 RUN wget -q https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg -O- | apt-key add -
 RUN wget -q https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg -O- | apt-key add -
-RUN wget https://www.ubuntulinux.jp/sources.list.d/saucy.list -O /etc/apt/sources.list.d/ubuntu-ja.list
+RUN wget https://www.ubuntulinux.jp/sources.list.d/trusty.list -O /etc/apt/sources.list.d/ubuntu-ja.list
 
 # 日付周りを日本語向けに変更します
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && echo 'Asia/Tokyo' > /etc/timezone && date
