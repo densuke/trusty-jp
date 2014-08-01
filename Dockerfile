@@ -13,6 +13,7 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && echo 'Asia/Tokyo' > /etc
 
 # ロケールを基本日本語に設定します
 RUN echo 'LC_ALL=ja_JP.UTF-8' > /etc/default/locale && echo 'LANG=ja_JP.UTF-8' >> /etc/default/locale
+RUN echo 'ja_JP.UTF-8 UTF-8' > /var/lib/locales/supported.d/ja && locale-gen
 
 # システムを更新します
 RUN apt-get update
