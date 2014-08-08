@@ -10,6 +10,8 @@ RUN wget https://www.ubuntulinux.jp/sources.list.d/trusty.list -O /etc/apt/sourc
 
 # 日付周りを日本語向けに変更します
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && echo 'Asia/Tokyo' > /etc/timezone && date
+# 日本向けマシンではハードウェアクロックはローカルタイムです
+RUN sed -e 's;UTC=yes;UTF=no;' -i /etc/default/rcS
 
 # ロケールを基本日本語に設定します
 RUN echo 'LC_ALL=ja_JP.UTF-8' > /etc/default/locale && echo 'LANG=ja_JP.UTF-8' >> /etc/default/locale
