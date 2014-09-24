@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.1
 MAINTAINER densuke
 
 # 日付周りを日本語向けに変更します
