@@ -11,10 +11,6 @@ RUN sed -e 's;UTC=yes;UTC=no;' -i /etc/default/rcS
 RUN echo 'LC_ALL=ja_JP.UTF-8' > /etc/default/locale && \
     echo 'LANG=ja_JP.UTF-8' >> /etc/default/locale && \
 		locale-gen ja_JP.UTF-8
-# デフォルトロケール(変数)を日本語向けに変更しておきます
-ENV LC_ALL ja_JP.UTF-8
-ENV LANG ${LC_ALL}
-
 # リポジトリを日本語向けに変更します
 RUN sed -e 's;http://archive;http://jp.archive;' -e  's;http://us\.archive;http://jp.archive;' -i /etc/apt/sources.list
 RUN [ ! -x /usr/bin/wget ] && apt-get update && \
@@ -32,3 +28,8 @@ RUN [ -f /.get-wget ] && \
     DEBIAN_FRONTEND=noninteractive apt-get purge --auto-remove -y wget && \
 		rm -f /.get-wget
 RUN apt-get clean
+
+# デフォルトロケール(変数)を日本語向けに変更しておきます
+ENV LC_ALL ja_JP.UTF-8
+ENV LANG j_JP.UTF-8
+
